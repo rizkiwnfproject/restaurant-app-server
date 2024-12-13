@@ -20,6 +20,7 @@ const pool = new Pool({
 app.get('/menus', async (req, res) => {
     try {
         const result = await pool.query('SELECT * FROM menu');
+        res.json(result.rows);
     } catch (err) {
         console.error('Error fetching menus:', err.message);
         res.status(500).send('Server Error');
